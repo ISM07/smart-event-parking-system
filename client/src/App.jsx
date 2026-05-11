@@ -1,24 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-import NavigationBar from './components/Navbar'
-
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import EventPage from './pages/EventPage'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Parking from './pages/Parking'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <BrowserRouter>
 
-      {/* ✅ Navbar هنا يظهر في كل الصفحات */}
-      <NavigationBar />
+      <Navbar />
 
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
-       <Route path='/register' element={<RegisterPage />} />
-        <Route path='/events' element={<EventPage />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/parking' element={<Parking />} />
       </Routes>
 
     </BrowserRouter>

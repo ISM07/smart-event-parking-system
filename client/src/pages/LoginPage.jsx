@@ -1,64 +1,34 @@
 import { useState } from 'react'
-
 import API from '../services/api'
 
-function LoginPage() {
+function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const loginUser = async () => {
+  const login = async () => {
+    const res = await API.post('/users/login', {
+      email,
+      password
+    })
 
-    try {
-
-      const res = await API.post('/users/login', {
-
-        email,
-        password
-
-      })
-
+    if(res.data.success){
       alert('Login Success')
-
-      console.log(res.data)
-
-    } catch (err) {
-
-      alert('Invalid Credentials')
-
+    } else {
+      alert('Failed Login')
     }
-
   }
 
   return (
-
-    <div className='container mt-5'>
-
+    <div>
       <h2>Login</h2>
 
-      <input
-        type='email'
-        placeholder='Email'
-        className='form-control mb-3'
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <input placeholder="Email" onChange={(e)=>setEmail(e.target.value)} />
+      <input placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
 
-      <input
-        type='password'
-        placeholder='Password'
-        className='form-control mb-3'
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button
-        className='btn btn-success'
-        onClick={loginUser}
-      >
-        Login
-      </button>
-
+      <button onClick={login}>Login</button>
     </div>
   )
 }
 
-export default LoginPage
+export default Login

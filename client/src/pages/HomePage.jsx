@@ -1,23 +1,10 @@
-import NavigationBar from '../components/Navbar'
-
-function HomePage() {
+function Home() {
   return (
-    <>
-      
-
-      <div className='container mt-5'>
-
-        <h1>
-          Smart Event & Parking Management System
-        </h1>
-
-        <p>
-          Welcome to the MERN Stack Project
-        </p>
-
-      </div>
-    </>
+    <div>
+      <h1>Smart Parking System</h1>
+      <p>Welcome to Parking Management System</p>
+    </div>
   )
 }
 
-export default HomePage
+export default Home
