@@ -3,7 +3,7 @@ import NavigationBar from '../components/Navbar'
 function HomePage() {
   return (
     <>
-      <NavigationBar />
+      
 
       <div className='container mt-5'>
 

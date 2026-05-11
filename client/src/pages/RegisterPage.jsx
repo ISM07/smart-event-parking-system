@@ -10,12 +10,10 @@ function RegisterPage() {
   const registerUser = async () => {
 
     await API.post('/users/register', {
-
-      name,
-      email,
-      password
-
-    })
+  name,
+  email,
+  password
+})
 
     alert('Registered Successfully')
 
