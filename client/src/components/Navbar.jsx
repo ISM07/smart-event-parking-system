@@ -16,8 +16,8 @@ function NavigationBar() {
             Home
           </Nav.Link>
 
-          <Nav.Link as={Link} to='/events'>
-            Events
+          <Nav.Link as={Link} to='/Parking'>
+            Parking
           </Nav.Link>
 
           {/* 🟢 زر Register */}
@@ -32,19 +32,7 @@ function NavigationBar() {
 
         </Nav>
 
-        <Form className='d-flex'>
-
-          <FormControl
-            type='search'
-            placeholder='Search'
-            className='me-2'
-          />
-
-          <Button variant='success'>
-            Search
-          </Button>
-
-        </Form>
+        
 
       </div>
     </Navbar>
