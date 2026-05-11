@@ -6,11 +6,15 @@ function HomePage() {
       <NavigationBar />
 
       <div className='container mt-5'>
-        <h1>Smart Event & Parking System</h1>
 
-        <button className='btn btn-primary'>
-          Create Event
-        </button>
+        <h1>
+          Smart Event & Parking Management System
+        </h1>
+
+        <p>
+          Welcome to the MERN Stack Project
+        </p>
+
       </div>
     </>
   )

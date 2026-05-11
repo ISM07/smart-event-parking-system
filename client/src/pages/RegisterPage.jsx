@@ -1,8 +1,14 @@
-function LoginPage() {
+function RegisterPage() {
   return (
     <div className='container mt-5'>
 
-      <h2>Login</h2>
+      <h2>Register</h2>
+
+      <input
+        type='text'
+        placeholder='Name'
+        className='form-control mb-3'
+      />
 
       <input
         type='email'
@@ -16,12 +22,12 @@ function LoginPage() {
         className='form-control mb-3'
       />
 
-      <button className='btn btn-success'>
-        Login
+      <button className='btn btn-primary'>
+        Register
       </button>
 
     </div>
   )
 }
 
-export default LoginPage
+export default RegisterPage
