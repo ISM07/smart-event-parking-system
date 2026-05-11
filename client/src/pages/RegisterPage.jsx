@@ -21,7 +21,7 @@ function RegisterPage() {
 
   } catch (error) {
 
-    console.log(error.response?.data || error.message)
+    console.log('REGISTER ERROR:', error.response?.data || error.message)
 
     alert('Register Failed ❌')
   }
