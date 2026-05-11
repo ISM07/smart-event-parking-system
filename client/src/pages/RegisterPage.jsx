@@ -8,17 +8,24 @@ function RegisterPage() {
   const [password, setPassword] = useState('')
 
   const registerUser = async () => {
+  try {
 
-    await API.post('/users/register', {
-  name,
-  email,
-  password
-})
+    const res = await API.post('/users/register', {
+      name,
+      email,
+      password
+    })
 
+    console.log(res.data)
     alert('Registered Successfully')
 
-  }
+  } catch (error) {
 
+    console.log(error.response?.data || error.message)
+
+    alert('Register Failed ❌')
+  }
+}
   return (
 
     <div className='container mt-5'>
