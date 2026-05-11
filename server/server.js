@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/api/events', require('./routes/eventRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
+app.use(express.json())
 app.listen(5000, () => {
   console.log('Server Running')
 })
