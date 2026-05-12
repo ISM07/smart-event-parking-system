@@ -1,33 +1,18 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+
 require('dotenv').config()
 
 const app = express()
 
-// Middleware
 app.use(cors())
 app.use(express.json())
 
-// Routes
-const parkingRoutes = require('./routes/parkingRoutes')
-const userRoutes = require('./routes/userRoutes')
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log('MongoDB Connected'))
+.catch(err => console.log(err))
 
-app.use('/api/parking', parkingRoutes)
-app.use('/api/users', userRoutes)
-
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URL)
-.then(() => {
-  console.log('MongoDB Connected')
-})
-.catch((err) => {
-  console.log(err)
-})
-
-// Server
-const PORT = process.env.PORT || 5000
-
-app.listen(PORT, () => {
-  console.log(`Server Running on ${PORT}`)
+app.listen(5000, () => {
+  console.log('Server Running on 5000')
 })
