@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const API = axios.create({
 
-  baseURL: 'https://your-backend.onrender.com/api'
+  baseURL: 'https://smart-event-parking-system.onrender.com/api'
 
 })
 
