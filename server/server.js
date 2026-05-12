@@ -8,14 +8,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Routes
-const userRoutes = require('./routes/userRoutes')
+// ✅ IMPORTANT ROUTES
 const parkingRoutes = require('./routes/parkingRoutes')
 
-app.use('/api/users', userRoutes)
-app.use('/api/parking', parkingRoutes)
+app.use('/api/parking', parkingRoutes) // 👈 هذا أهم سطر
 
-// MongoDB
+// DB
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err))
