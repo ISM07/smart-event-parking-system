@@ -7,7 +7,6 @@ function Parking() {
   const [carNumber, setCarNumber] = useState('')
   const [carColor, setCarColor] = useState('')
   const [list, setList] = useState([])
-
   const [editId, setEditId] = useState(null)
 
   const getData = async () => {
@@ -16,11 +15,19 @@ function Parking() {
   }
 
   const addCar = async () => {
+
+    // مهم جدًا منع 500
+    if (!personName || !carNumber || !carColor) {
+      alert("Fill all fields")
+      return
+    }
+
     await API.post('/parking', {
       personName,
       carNumber,
       carColor
     })
+
     getData()
   }
 
