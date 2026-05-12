@@ -9,23 +9,58 @@ function Parking() {
   const [list, setList] = useState([])
 
   const addCar = async () => {
-    await API.post('/parking', {
-      personName,
-      carNumber,
-      carColor
-    })
 
-    getData()
+    if (!personName || !carNumber || !carColor) {
+      alert('Please fill all fields')
+      return
+    }
+
+    try {
+
+      await API.post('/parking', {
+        personName,
+        carNumber,
+        carColor
+      })
+
+      alert('✅ Car Added')
+
+      setPersonName('')
+      setCarNumber('')
+      setCarColor('')
+
+      getData()
+
+    } catch (error) {
+      alert('❌ Failed To Add Car')
+    }
   }
 
   const getData = async () => {
-    const res = await API.get('/parking')
-    setList(res.data)
+
+    try {
+
+      const res = await API.get('/parking')
+      setList(res.data)
+
+    } catch (error) {
+      alert('❌ Failed To Load Data')
+    }
   }
 
   const deleteCar = async (id) => {
-    await API.delete(`/parking/${id}`)
-    getData()
+
+    try {
+
+      await API.delete(`/parking/${id}`)
+
+      alert('🗑️ Deleted')
+
+      getData()
+
+    } catch (error) {
+      alert('❌ Delete Failed')
+    }
   }
 
   useEffect(() => {
@@ -33,21 +68,61 @@ function Parking() {
   }, [])
 
   return (
-    <div>
-      <h2>Parking Management</h2>
+    <div className="container">
 
-      <input placeholder="Person Name" onChange={(e)=>setPersonName(e.target.value)} />
-      <input placeholder="Car Number" onChange={(e)=>setCarNumber(e.target.value)} />
-      <input placeholder="Car Color" onChange={(e)=>setCarColor(e.target.value)} />
+      <div className="card">
 
-      <button onClick={addCar}>Add</button>
+        <h2>Parking Management</h2>
 
-      {list.map(item => (
-        <div key={item._id}>
-          <p>{item.personName} - {item.carNumber} - {item.carColor}</p>
-          <button onClick={()=>deleteCar(item._id)}>Delete</button>
-        </div>
-      ))}
+        <input
+          placeholder="Person Name"
+          value={personName}
+          onChange={(e) => setPersonName(e.target.value)}
+        />
+
+        <input
+          placeholder="Car Number"
+          value={carNumber}
+          onChange={(e) => setCarNumber(e.target.value)}
+        />
+
+        <input
+          placeholder="Car Color"
+          value={carColor}
+          onChange={(e) => setCarColor(e.target.value)}
+        />
+
+        <button onClick={addCar}>
+          Add Car
+        </button>
+
+      </div>
+
+      <div className="list-container">
+
+        {
+          list.map((item) => (
+            <div className="car-card" key={item._id}>
+
+              <h3>{item.personName}</h3>
+
+              <p>🚘 {item.carNumber}</p>
+
+              <p>🎨 {item.carColor}</p>
+
+              <button
+                className="delete-btn"
+                onClick={() => deleteCar(item._id)}
+              >
+                Delete
+              </button>
+
+            </div>
+          ))
+        }
+
+      </div>
+
     </div>
   )
 }

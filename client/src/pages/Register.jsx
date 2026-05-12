@@ -8,24 +8,63 @@ function Register() {
   const [password, setPassword] = useState('')
 
   const register = async () => {
-    await API.post('/users/register', {
-      name,
-      email,
-      password
-    })
 
-    alert('Registered')
+    if (!name || !email || !password) {
+      alert('Please fill all fields')
+      return
+    }
+
+    try {
+
+      await API.post('/users/register', {
+        name,
+        email,
+        password
+      })
+
+      alert('✅ Registered Successfully')
+
+      setName('')
+      setEmail('')
+      setPassword('')
+
+    } catch (error) {
+      alert('❌ Register Failed')
+    }
   }
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="container">
 
-      <input placeholder="Name" onChange={(e)=>setName(e.target.value)} />
-      <input placeholder="Email" onChange={(e)=>setEmail(e.target.value)} />
-      <input placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
+      <div className="card">
 
-      <button onClick={register}>Register</button>
+        <h2>Register</h2>
+
+        <input
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button onClick={register}>
+          Register
+        </button>
+
+      </div>
+
     </div>
   )
 }

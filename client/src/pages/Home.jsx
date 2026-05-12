@@ -1,8 +1,13 @@
 function Home() {
   return (
-    <div>
-      <h1>Smart Parking System</h1>
-      <p>Welcome to Parking Management System</p>
+    <div className="container">
+      <div className="card">
+        <h1>🚗 Smart Parking System</h1>
+
+        <p>
+          Welcome to the Parking Management System
+        </p>
+      </div>
     </div>
   )
 }
