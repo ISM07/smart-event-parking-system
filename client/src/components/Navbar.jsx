@@ -1,40 +1,58 @@
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function NavigationBar() {
-  return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
-      <div className='container'>
 
-        <Navbar.Brand as={Link} to='/'>
-          Smart Parking
+  return (
+
+    <Navbar
+      bg="dark"
+      variant="dark"
+      expand="lg"
+      sticky="top"
+    >
+
+      <Container>
+
+        {/* Logo */}
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="fw-bold"
+        >
+          🚗 Smart Parking
         </Navbar.Brand>
 
-        <Nav className='me-auto'>
+        {/* Mobile Menu Button */}
+        <Navbar.Toggle aria-controls="navbar-nav" />
 
-          <Nav.Link as={Link} to='/'>
-            Home
-          </Nav.Link>
+        {/* Links */}
+        <Navbar.Collapse id="navbar-nav">
 
-          <Nav.Link as={Link} to='/Parking'>
-            Parking
-          </Nav.Link>
+          <Nav className="ms-auto">
 
-          {/* 🟢 زر Register */}
-          <Nav.Link as={Link} to='/register'>
-            Register
-          </Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
 
-          {/* 🟢 زر Login */}
-          <Nav.Link as={Link} to='/login'>
-            Login
-          </Nav.Link>
+            <Nav.Link as={Link} to="/parking">
+              Parking
+            </Nav.Link>
 
-        </Nav>
+            <Nav.Link as={Link} to="/register">
+              Register
+            </Nav.Link>
 
-        
+            <Nav.Link as={Link} to="/login">
+              Login
+            </Nav.Link>
 
-      </div>
+          </Nav>
+
+        </Navbar.Collapse>
+
+      </Container>
+
     </Navbar>
   )
 }
